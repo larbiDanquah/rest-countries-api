@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useAppSelector } from "../redux/hooks"
 import Country from "./Country"
+import { Link } from 'react-router-dom'
 
 interface Country {
     name: string,
@@ -65,7 +66,7 @@ const CountryList = () => {
     
     return (
         <div className="w-4/5 mt-12 my-0 mx-auto pb-6 grid gap-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-            {countries.length > 1 ? countries.map((country: Country, i) => <Country key={i} country={country} />) : ''}
+            {countries.length > 1 ? countries.map((country: Country, i) => (<Link key={i} to={`/countries/${country.name}`}><Country country={country} /></Link>)) : ''}
         </div>
     )
 
