@@ -19,14 +19,14 @@ interface Country {
 
 const CountryRoute = () => {
     const { countryId } = useParams();
-    const [country, setCountry] = useState([])
+    const [country, setCountry] = useState<Country>()
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         setLoading(true)
 
-        fetch(`https://restcountries.com/v2/name/${countryId}?fullText=true`)
+        fetch(`https://restcountries.com/v2/alpha/${countryId}`)
         .then(response => response.json())
         .then(setCountry)
         .then(() => setLoading(false))
@@ -38,6 +38,7 @@ const CountryRoute = () => {
     if (error) return <pre>{JSON.stringify(error)}</pre>
     if (!country) return null
     
+    
     return(
         <div className='w-4/5 mt-12 my-0 mx-auto'>
             <Link to="/" className='flex items-center gap-2 bg-white w-28 px-6 py-1.5 drop-shadow-md rounded'>
@@ -46,15 +47,14 @@ const CountryRoute = () => {
             </Link>
 
             <div className='mt-16'>
-                {country.map((country: Country) => (
-                    <div key={country.alpha3Code}>
+                    <div>
                         <img className='rounded-md mb-11' src={country.flag} />
 
                         <h1 className='text-xl font-bold mb-4'>{country.name}</h1>
 
                         <div className='space-y-4 mb-8'>
                             <p className='text-sm'><span className='font-semibold'>Native Name:</span> {country.nativeName}</p>
-                            <p className='text-sm'><span className='font-semibold'>Population:</span> {country.population.toLocaleString()}</p>
+                            <p className='text-sm'><span className='font-semibold'>Population:</span> {country.population}</p>
                             <p className='text-sm'><span className='font-semibold'>Region:</span> {country.region}</p>
                             <p className='text-sm'><span className='font-semibold'>Sub Region:</span> {country.subregion}</p>
                             <p className='text-sm'><span className='font-semibold'>Capital:</span> {country.capital}</p>
@@ -86,7 +86,6 @@ const CountryRoute = () => {
                             </div>
                         </div>
                     </div>
-                ))}
             </div>
         </div>
     )

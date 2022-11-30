@@ -9,6 +9,7 @@ interface Country {
     capital: string,
     region: string,
     flag: string,
+    alpha3Code: string,
 }
 
 const CountryList = () => {
@@ -66,7 +67,7 @@ const CountryList = () => {
     
     return (
         <div className="w-4/5 mt-12 my-0 mx-auto pb-6 grid gap-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-            {countries.length > 1 ? countries.map((country: Country, i) => (<Link key={i} to={`/countries/${country.name}`}><Country country={country} /></Link>)) : ''}
+            {countries.length > 1 ? countries.map((country: Country, i) => (<Link key={i} to={`/countries/${country.alpha3Code}`}><Country country={country} /></Link>)) : ''}
         </div>
     )
 
