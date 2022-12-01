@@ -7,11 +7,11 @@ const Search = () => {
 
     
     return (
-        <div className='flex bg-white md:w-2/5 pl-8 rounded-lg drop-shadow-md'>
+        <div className='flex bg-white md:w-2/5 pl-8 rounded-lg drop-shadow-md dark:bg-dark-mode-lighter'>
             <img src={search} alt="Search Icon" />
             <input 
             onChange={(e) => dispatch(searchCountry(e.target.value))}
-            className='w-full py-4 px-6 focus:outline-none rounded-lg placeholder:text-sm md:placeholder:text-md' 
+            className='w-full py-4 px-6 focus:outline-none rounded-lg placeholder:text-sm md:placeholder:text-md dark:bg-dark-mode-lighter' 
             placeholder="Search for a country..." 
             />
         </div>
