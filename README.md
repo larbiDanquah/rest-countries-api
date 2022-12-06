@@ -36,7 +36,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Github](https://github.com/larbiDanquah/rest-countries-api)
-- Live Site URL: [Netlify](https://your-live-site-url.com)
+- Live Site URL: [Netlify](https://react-typescript-rest-countries.netlify.app/)
 
 ## My process
 
