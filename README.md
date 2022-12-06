@@ -52,4 +52,4 @@ I learned how to build an application with React and TypeScript. I also learnt h
 
 ### Useful resources
 
-- [Tailwindcss](https://tailwindcss.com/) ) - This helped me for as I was styling the components. It helped me save time on writing css and allow me to focus on the logic of the application.
+- [Tailwindcss](https://tailwindcss.com/) ) - This helped me for as I was styling the components. It helped me save time on writing css and allowed me to focus on the logic of the application.
