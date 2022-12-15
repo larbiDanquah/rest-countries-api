@@ -19,6 +19,7 @@ interface Country {
 
 const CountryRoute = () => {
     const { countryId } = useParams();
+    const [countries, setCountries] = useState<any[]>([])
     const [country, setCountry] = useState<Country>()
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
@@ -32,6 +33,18 @@ const CountryRoute = () => {
         .then(() => setLoading(false))
         .catch(setError)
     }, [countryId])
+
+    useEffect(() => {
+        fetch(`https://restcountries.com/v2/all`)
+        .then(response => response.json())
+        .then(setCountries)
+        .catch(setError)
+    }, [])
+
+    const getBorderCountry = (borderCode: string) => {
+        const foundCountry = countries.find(country => country.alpha3Code === borderCode)
+        return foundCountry?.name 
+    }
     
 
     if (loading) return <h1 className="text-center mt-6 text-xl">Loading...</h1>
@@ -87,8 +100,9 @@ const CountryRoute = () => {
 
                                 <div className='mt-4 flex flex-wrap gap-2.5'>
                                     {country.borders.map((border, i) => (
+                                        
                                         <Link key={i} to={`/countries/${border}`} className='flex items-center gap-2 bg-white px-8 py-1.5 drop-shadow-md rounded dark:text-white dark:bg-dark-mode-lighter'>
-                                            {border}
+                                            {getBorderCountry(border)}
                                         </Link>
                                     ))}
                                 </div>
